@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <h1>Home</h1>
+    
+    <h2>Prompts:</h2>
+    <ul>
+        {% for prompt in prompts %}
+            <li>
+                <p>{{ prompt.content }}</p>
+                <p>Category: {{ prompt.category.name }}</p>
+                <p>Likes: {{ prompt.likes }}</p>
+                {% if 'user_id' in session and prompt.user_id == session['user_id'] %}
+                    <a href="{{ url_for('edit_prompt', prompt_id=prompt.id) }}">Edit</a>
+                    <a href="{{ url_for('delete_prompt', prompt_id=prompt.id) }}">Delete</a>
+                {% endif %}
+                {% if 'user_id' in session %}
+                    <a href="{{ url_for('like_prompt', prompt_id=prompt.id) }}">Like</a>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+    
+    {% if 'user_id' in session %}
+        <a href="{{ url_for('create_prompt') }}">Create Prompt</a>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Prompt{% endblock %}
+
+{% block content %}
+    <h1>Edit Prompt</h1>
+    
+    {% if 'user_id' not in session %}
+        <p>Please login to edit the prompt.</p>
+    {% elif prompt.user_id != session['user_id'] %}
+        <p>You do not have permission to edit this prompt.</p>
+    {% else %}
+        <form method="post" action="{{ url_for('edit_prompt', prompt_id=prompt.id) }}">
+            <textarea name="content" placeholder="Prompt content" required>{{ prompt.content }}</textarea><br>
+            <select name="category">
+                {% for category in categories %}
+                    <option value="{{ category.id }}" {% if prompt.category_id == category.id %}selected{% endif %}>{{ category.name }}</option>
+                {% endfor %}
+            </select><br>
+            <input type="submit" value="Save Changes">
+        </form>
+    {% endif %}
+{% endblock %}

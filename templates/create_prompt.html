@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Create Prompt{% endblock %}
+
+{% block content %}
+    <h1>Create Prompt</h1>
+    
+    {% if 'user_id' not in session %}
+        <p>Please login to create a prompt.</p>
+    {% else %}
+        <form method="post" action="{{ url_for('create_prompt') }}">
+            <textarea name="content" placeholder="Prompt content" required></textarea><br>
+            <select name="category">
+                {% for category in categories %}
+                    <option value="{{ category.id }}">{{ category.name }}</option>
+                {% endfor %}
+            </select><br>
+            <input type="submit" value="Create Prompt">
+        </form>
+    {% endif %}
+{% endblock %}

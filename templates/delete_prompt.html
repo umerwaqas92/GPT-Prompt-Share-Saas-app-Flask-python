@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Delete Prompt{% endblock %}
+
+{% block content %}
+    <h1>Delete Prompt</h1>
+    
+    {% if 'user_id' not in session %}
+        <p>Please login to delete the prompt.</p>
+    {% elif prompt.user_id != session['user_id'] %}
+        <p>You do not have permission to delete this prompt.</p>
+    {% else %}
+        <p>Are you sure you want to delete the following prompt?</p>
+        <p>{{ prompt.content }}</p>
+        <a href="{{ url_for('delete_prompt', prompt_id=prompt.id) }}">Yes, delete</a>
+        <a href="{{ url_for('home') }}">No, cancel</a>
+    {% endif %}
+{% endblock %}
