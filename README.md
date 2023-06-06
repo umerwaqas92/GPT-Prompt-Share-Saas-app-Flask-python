@@ -54,10 +54,10 @@ This is a SAAS (Software as a Service) web application that allows users to crea
 - Log out when you're done using the application.
 
 ## Screenshots
+![Screenshot 1](screenshots/Screenshot%202023-06-06%20at%203.05.40%20PM.png)
+![Screenshot 2](screenshots/Screenshot%202023-06-06%20at%203.08.25%20PM.png)
+![Screenshot 3](screenshots/Screenshot%202023-06-06%20at%203.08.34%20PM.png)
 
-![Screenshot 1](screenshots/Screenshot 2023-06-06 at 3.05.40 PM.png)
-![Screenshot 2](screenshots/Screenshot 2023-06-06 at 3.08.25 PM.png)
-![Screenshot 3](screenshots/Screenshot 2023-06-06 at 3.08.34 PM.png)
 
 ## Contributing
 
